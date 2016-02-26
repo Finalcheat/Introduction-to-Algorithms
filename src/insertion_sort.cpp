@@ -84,7 +84,10 @@ int main()
     insertion_sort(gs.begin(), gs.end(), [](const Goods& l, const Goods& r) { return l.price < r.price; });
     std::cout << gs << std::endl;
 
-    delete arr;
+    insertion_sort(gs.begin(), gs.end(), [](const Goods& l, const Goods& r) { return l.price > r.price; });
+    std::cout << gs << std::endl;
+
+    delete[] arr;
 
     return 0;
 }
