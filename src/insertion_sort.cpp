@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <list>
 #include <stdlib.h>
 #include <ctime>
 
@@ -13,6 +14,16 @@ std::ostream& operator<<(std::ostream& os, const std::vector<T>& v)
     return os;
 }
 
+template <typename T>
+std::ostream& operator<<(std::ostream& os, const std::list<T>& l)
+{
+    typename std::list<T>::const_iterator it = l.begin();
+    while (it != l.end())
+        os << *it++ << " ";
+    return os;
+}
+
+
 template <typename T, typename Comp = std::less<typename std::iterator_traits<T>::value_type> >
 void insertion_sort(T begin, T end, Comp comp = Comp())
 {
@@ -20,9 +31,9 @@ void insertion_sort(T begin, T end, Comp comp = Comp())
     {
         typename std::iterator_traits<T>::value_type v = *iter;
         T pos = iter;
-        while (pos != begin && comp(v, *(pos - 1)))
+        while (pos != begin && comp(v, *(std::prev(pos, 1))))
         {
-            *pos = *(pos - 1);
+            *pos = *(std::prev(pos, 1));
             --pos;
         }
         *pos = v;
@@ -56,6 +67,7 @@ int main()
     const int length = 20;
     int *arr = new int[length];
     std::vector<int> vec(length);
+    std::list<int> lists;
     std::vector<Goods> gs;
     for (int i = 0; i < length; ++i)
     {
@@ -65,12 +77,17 @@ int main()
         vec[i] = num;
 
         gs.push_back(Goods((i + 1), num));
+        lists.push_back(num);
     }
     std::cout << vec << std::endl;
 
     // vector<int> insertion_sort
     insertion_sort(vec.begin(), vec.end());
     std::cout << vec << std::endl;
+
+    // list<int> insertion_sort
+    insertion_sort(lists.begin(), lists.end());
+    std::cout << lists << std::endl;
 
     // int* insertion_sort
     insertion_sort(arr, arr + length);
