@@ -24,13 +24,13 @@ std::ostream& operator<<(std::ostream& os, const std::list<T>& l)
 }
 
 
-template <typename T, typename Comp = std::less<typename std::iterator_traits<T>::value_type> >
-void insertion_sort(T begin, T end, Comp comp = Comp())
+template <typename InputIterator, typename Comp = std::less<typename std::iterator_traits<InputIterator>::value_type> >
+void insertion_sort(InputIterator begin, InputIterator end, Comp comp = Comp())
 {
-    for (T iter = begin; iter != end; ++iter)
+    for (InputIterator iter = begin; iter != end; ++iter)
     {
-        typename std::iterator_traits<T>::value_type v = *iter;
-        T pos = iter;
+        typename std::iterator_traits<InputIterator>::value_type v = *iter;
+        InputIterator pos = iter;
         while (pos != begin && comp(v, *(std::prev(pos, 1))))
         {
             *pos = *(std::prev(pos, 1));
