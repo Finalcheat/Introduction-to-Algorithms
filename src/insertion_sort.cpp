@@ -1,8 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
-#include <stdlib.h>
-#include <ctime>
+#include <random>
 
 
 template <typename T>
@@ -63,7 +62,8 @@ std::ostream& operator<<(std::ostream& os, const std::vector<Goods>& gs)
 
 int main()
 {
-    srand((int)time(0));
+    std::default_random_engine random(time(0));
+    std::uniform_int_distribution<int> dis(1, 100);
     const int length = 20;
     int *arr = new int[length];
     std::vector<int> vec(length);
@@ -72,7 +72,7 @@ int main()
     for (int i = 0; i < length; ++i)
     {
         // [1, 100]
-        const int num = rand() % 100 + 1;
+        const int num = dis(random);
         arr[i] = num;
         vec[i] = num;
 
