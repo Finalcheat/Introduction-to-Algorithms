@@ -15,7 +15,6 @@ void merge(InputIterator begin, InputIterator middle, InputIterator end, Comp co
 
     // copy [middle, end)
     typename std::iterator_traits<InputIterator>::difference_type n2 = std::distance(middle, end);
-    typename std::iterator_traits<InputIterator>::difference_type num2 = n2;
     std::vector<typename std::iterator_traits<InputIterator>::value_type> vec2(n2);
     typename std::vector<typename std::iterator_traits<InputIterator>::value_type>::iterator p2 = vec2.begin();
     std::copy(middle, end, p2);
