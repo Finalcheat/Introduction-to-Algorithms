@@ -4,3 +4,4 @@
 > * [src/merge_sort.cpp](https://github.com/Finalcheat/Introduction-to-Algorithms/blob/master/src/merge_sort.cpp) -> 归并排序
 > * [src/sub_array.cpp](https://github.com/Finalcheat/Introduction-to-Algorithms/blob/master/src/sub_array.cpp) -> 最大子数组
 > * [src/heap.cpp](https://github.com/Finalcheat/Introduction-to-Algorithms/blob/master/src/heap.cpp) -> 堆排序
+> * [src/quick_sort.cpp](https://github.com/Finalcheat/Introduction-to-Algorithms/blob/master/src/quick_sort.cpp) -> 快速排序
