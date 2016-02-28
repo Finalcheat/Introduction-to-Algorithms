@@ -49,6 +49,7 @@ class List
     public:
         ListNode<T>* search(const T& v);
         void insert(const T& v);
+        void push(const T& v);
         void remove(const T& v);
         iterator begin() { return iterator(head); }
         iterator end() { return nullptr; }
@@ -99,6 +100,26 @@ void List<T>::insert(const T& v)
         node->next = head;
         head->prev = node;
         head = node;
+    }
+}
+
+
+template <typename T>
+void List<T>::push(const T& v)
+{
+    ListNode<T>* node = new ListNode<T>;
+    node->data = v;
+    node->prev = nullptr;
+    node->next = nullptr;
+    if (head == nullptr)
+    {
+        tail = head = node;
+    }
+    else
+    {
+        node->prev = tail;
+        tail->next = node;
+        tail = node;
     }
 }
 
@@ -158,6 +179,8 @@ int main()
     l.remove(3);
     l.remove(9);
     l.remove(0);
+
+    l.push(99);
 
     std::cout << l << std::endl;
 
