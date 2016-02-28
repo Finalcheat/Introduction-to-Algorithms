@@ -12,8 +12,35 @@ struct ListNode
 
 
 template <typename T>
+struct ListNodeIterator
+{
+    typedef ListNodeIterator<T> iterator;
+    typedef T* pointer;
+    typedef T& reference;
+
+    ListNodeIterator() : node(nullptr) {}
+    ListNodeIterator(ListNode<T>* _node) : node(_node) {}
+    ListNodeIterator(const ListNodeIterator& n) : node(n.node) {}
+
+    bool operator==(const ListNodeIterator& n) { return this->node == n.node; }
+    bool operator!=(const ListNodeIterator& n) { return this->node != n.node; }
+    reference operator*() const { return node->data; }
+    pointer operator->() const { return &(node->data); }
+    iterator& operator++() { node = node->next; return *this; }
+    iterator operator++(int) { iterator tmp = *this; ++*this; return tmp; }
+    iterator& operator--() { node = node->prev; return *this; }
+    iterator operator--(int) { iterator tmp = *this; --*this; return tmp; }
+
+    ListNode<T>* node;
+};
+
+
+template <typename T>
 class List
 {
+    public:
+        typedef ListNodeIterator<T> iterator;
+
     public:
         List() : head(nullptr), tail(nullptr) {}
         List(const T& v) : head(nullptr), tail(nullptr) { insert(v); }
@@ -23,8 +50,8 @@ class List
         ListNode<T>* search(const T& v);
         void insert(const T& v);
         void remove(const T& v);
-        ListNode<T>* begin() { return head; }
-        ListNode<T>* end() { return nullptr; }
+        iterator begin() { return iterator(head); }
+        iterator end() { return nullptr; }
 
     private:
         ListNode<T>* head;
@@ -109,9 +136,9 @@ void List<T>::remove(const T& v)
 template <typename T>
 std::ostream& operator<<(std::ostream& os, List<T>& l)
 {
-    for (ListNode<T>* p = l.begin(); p != l.end(); p = p->next)
+    for (typename List<T>::iterator iter = l.begin(); iter != l.end(); ++iter)
     {
-        os << p->data << " ";
+        os << *iter << " ";
     }
     return os;
 }
