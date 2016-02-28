@@ -7,3 +7,4 @@
 > * [src/quick_sort.cpp](https://github.com/Finalcheat/Introduction-to-Algorithms/blob/master/src/quick_sort.cpp) -> 快速排序
 > * [src/stack.cpp](https://github.com/Finalcheat/Introduction-to-Algorithms/blob/master/src/stack.cpp) -> 栈
 > * [src/list.cpp](https://github.com/Finalcheat/Introduction-to-Algorithms/blob/master/src/list.cpp) -> 双链表
+> * [src/tree.cpp](https://github.com/Finalcheat/Introduction-to-Algorithms/blob/master/src/tree.cpp) -> 二叉搜索树
