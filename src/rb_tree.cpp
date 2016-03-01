@@ -102,6 +102,17 @@ void RBTree<T>::_rb_insert_fixup(RBTreeNode<T>* node)
 {
     while (node->parent && node->parent->color == RED)
     {
+        RBTreeNode<T>* parentNode = node->parent;
+        if (parentNode->parent && parentNode == parentNode->parent->left)
+        {
+            // 父节点是祖父节点的左节点
+            
+            // 祖父节点的右节点
+            RBTreeNode<T>* y = parentNode->parent->right;
+            if (y && y->color == RED)
+            {
+            }
+        }
     }
     root->color = BLACK;
 }
